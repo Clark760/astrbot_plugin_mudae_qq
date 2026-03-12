@@ -1188,13 +1188,13 @@ class CCB_Plugin(Star):
             yield event.plain_result(f"每小时抽卡次数已设置为{count}次")
         elif feature == "后宫上限":
             if value is None or not str(value).strip().isdigit():
-                yield event.plain_result("用法：后宫上限 [5~50]")
+                yield event.plain_result("用法：后宫上限 [5~500]")
                 return
             count = int(str(value).strip())
             if count < 5:
                 count = 5
-            if count > 50:
-                count = 50
+            if count > 500:
+                count = 500
             config["harem_max_size"] = count
             await self.put_group_cfg(event.get_group_id(), config)
             yield event.plain_result(f"后宫上限已设置为{count}")
